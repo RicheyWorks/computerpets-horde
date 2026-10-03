@@ -1,36 +1,44 @@
 # Horde
 
-**Pet Defense Corps** — Horde survival: auto-attack waves while you steer one pet. Siege is the desktop edge; Horde is the arena floor.
+**Pet Defense Corps** — A planned survival game with auto-attacking pets, trait-based upgrades, and ten-minute runs.
 
 Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [computerpets-ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem).
 
-| | |
+[Status](#status) · [Design](docs/DESIGN.md) · [Contributor start](#contributor-start) · [Ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem)
+
+| Project | At a glance |
 | --- | --- |
-| Status | Design scaffold — loop and engine frozen |
+| Status | Design scaffold; not runnable yet |
 | License | MIT |
 | Tokens | Minigames never mint or burn. Tired overlay, not a dead lineage. |
-| First pet | [Meet Rui first](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional. |
+| First pet | [Flagship start guide](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md) |
 
-## The loop
+## Status
+
+This repository contains a [design](docs/DESIGN.md) and a [source placeholder](src/game.gd). It has no runnable application, build manifest, automated tests, or CI workflow.
+
+The experience, interfaces, integrations, and safeguards below are **implementation plans**, not supported features. The first implementation slice defines the initial contribution target.
+
+## Planned experience
 
 Dojo trains the numbers. Horde spends them. Weapon evolutions are trait-legal. 10-minute nightly run. Death = tired overlay, not a lost pet.
 
-## Who plays
+## Intended audience
 
 One pet, ten minutes, nightly.
 
-## What it is not
+## Out of scope
 
 A species-change evolution. Illegal upgrades filtered.
 
-## Genre and engine
+## Planned genre and engine
 
 - Genre: **Bullet-heaven**
 - Engine: **Godot**
 - Stack: Godot 4 · Vampire Survivors-style waves · one pet you orbit-auto-attack
-- Default surface: `Godot editor`
+- Proposed surface: `Godot editor`
 
-## Architecture
+## Proposed integration
 
 ```mermaid
 flowchart LR
@@ -39,41 +47,41 @@ flowchart LR
   motion --> horde
 ```
 
-## How you play
+## Proposed play loop
 
 1. Pick pet + starting trait weapon.
 2. Survive waves. Choose 3-of-1 upgrades.
 3. Chest loot = run-only until extract.
 4. Extract at 10:00 or die trying.
 
-## First slice
+## First implementation slice
 
-Build this and stop.
+Initial implementation target:
 
 **Rui auto-attack, 3-of-1 upgrades, extract at 10:00 or die tired.**
 
-You know it works when: Species-change upgrade filtered. Spawn cap on low CPU. Overlay continues if Horde is closed.
+Acceptance targets: Species-change upgrade filtered. Spawn cap on low CPU. Overlay continues if Horde is closed.
 
-## Environment
+## Planned environment
 
 Godot 4
 
-## Failure doctrine
+## Planned safeguards
 
 Upgrade that changes species → illegal, filtered. Low-end CPU → spawn cap. Overlay continues if Horde is closed.
 
-Canon rules that never yield:
+Design constraints:
 
 - 210 living kinds. No illegal hybrids.
 - Overlay pets can get tired, sick, or hide. Tokens are not burned by a minigame.
 - Desktop walk stays the main quest. Closing Horde must leave Rui walking.
 
-## Neighbors
+## Related projects
 
-- computerpets-siege
-- computerpets-dojo
-- computerpets-raid
-- computerpets-motion
+- [computerpets-siege](https://github.com/RicheyWorks/computerpets-siege)
+- [computerpets-dojo](https://github.com/RicheyWorks/computerpets-dojo)
+- [computerpets-raid](https://github.com/RicheyWorks/computerpets-raid)
+- [computerpets-motion](https://github.com/RicheyWorks/computerpets-motion)
 
 ## Layout
 
@@ -85,13 +93,18 @@ computerpets-horde/
   src/                implementation lands here
 ```
 
-## Run (Windows)
+## Contributor start
+
+With Git and PowerShell, clone the scaffold and read its design and source marker:
 
 ```powershell
-godot --path . ; F5
+git clone https://github.com/RicheyWorks/computerpets-horde.git
+Set-Location computerpets-horde
+Get-Content .\docs\DESIGN.md
+Get-Content .\src\game.gd
 ```
 
-Meet Rui first via the [flagship start-here](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional.
+Start with the [first implementation slice](#first-implementation-slice). Add the minimum project setup and tests needed for that slice, then document verified run commands. The proposed stack above is a design choice; there is no install or launch command for this checkout yet.
 
 ## Links
 
